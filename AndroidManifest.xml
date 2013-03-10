@@ -5,22 +5,35 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="16" />
 
     <application
         android:allowBackup="true"
+        android:debuggable="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.medreminder.MedMain"
-            android:label="@string/app_name" >
+            android:name="com.example.medreminder.MainActivity"
+            android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.medreminder.Aa"
+            android:label="@string/title_activity_aa" >
+        </activity>
+        <activity
+            android:name="com.example.medreminder.AddMedicatioActivity"
+            android:label="@string/title_activity_add_medicatio"
+            android:parentActivityName="com.example.medreminder.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.medreminder.MainActivity" />
         </activity>
     </application>
 
