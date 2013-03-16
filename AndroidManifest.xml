@@ -35,6 +35,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.medreminder.MainActivity" />
         </activity>
+        <activity
+            android:name="com.example.medreminder.TestFragment"
+            android:label="@string/title_activity_test_fragment" >
+        </activity>
     </application>
 
 </manifest>

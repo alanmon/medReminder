@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.ListFragment;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
@@ -80,7 +81,7 @@ public class MainActivity extends FragmentActivity implements
 			// the TabListener interface, as the callback (listener) for when
 			// this tab is selected.
 			actionBar.addTab(actionBar.newTab()
-					.setText(mSectionsPagerAdapter.getPageTitle(i))
+					.setText(mSectionsPagerAdapter.getPageTitle(i))//add icon over here
 					.setTabListener(this));
 		}
 		/*actionBar.addTab(actionBar.newTab()
@@ -139,14 +140,22 @@ public class MainActivity extends FragmentActivity implements
 			fragment.setArguments(args);
 			return fragment;
 			*/
-			if(position == 0)
-			{
-				Fragment fragment = new medicationActivity();
-				return fragment;
+			if (position == 0) {
+				Fragment fragment0 = new checkActivity();
+				return fragment0;
 			}
-			else if(position == 1){
-				Fragment fragment1 = new historyActivity();
-				return fragment1;
+			else if(position == 1)
+			{
+				Fragment history = medicationActivity.newInstance(1);
+				return  history;
+			}
+			else if(position == 2){
+				Fragment fragment2 = new historyActivity();
+				return fragment2;
+			}
+			else if(position == 3){
+				Fragment fragment3 = new settingActivity();
+				return fragment3;
 			}
 			else {
 				return null;
@@ -156,7 +165,7 @@ public class MainActivity extends FragmentActivity implements
 		@Override
 		public int getCount() {
 			// Show 2 total pages.
-			return 2;
+			return 4;
 		}
 
 		@Override
@@ -164,63 +173,20 @@ public class MainActivity extends FragmentActivity implements
 			Locale l = Locale.getDefault();
 			switch (position) {
 			case 0:
-				return getString(R.string.title_section1).toUpperCase(l);
+				return getString(R.string.title_section0).toUpperCase(l);
 			case 1:
+				return getString(R.string.title_section1).toUpperCase(l);
+			case 2:
 				return getString(R.string.title_section2).toUpperCase(l);
+			case 3:
+				return getString(R.string.title_section3).toUpperCase(l);
 			}
 			return null;
 		}
 	}
 
-	/**
-	 * A dummy fragment representing a section of the app, but that simply
-	 * displays dummy text.
-	 */
-	public static class medicationActivity extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-
-		public medicationActivity() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.medication,
-					container, false);
-			Button b_addMed = (Button)rootView.findViewById(R.id.b_addmed);
-			b_addMed.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Intent myIntent = new Intent(v.getContext(), AddMedicatioActivity.class);
-		            startActivityForResult(myIntent, 0);	
-				}
-			});
-			return rootView;
-		}
-	}
 	
-	public static class historyActivity extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-
-		public historyActivity() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.history,
-					container, false);
-			return rootView;
-		}
-	}
 	
+
 
 }

@@ -10,8 +10,10 @@
     <string name="medication_name_">Medication Name:</string>
     <string name="med_name_hint">Please enter the medicine name</string>
     <string name="title_activity_aa">Aa</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section3">Setting</string>
     <string name="title_activity_add_medicatio">MainActivity</string>
     <string name="medicine_type_">Medicine Type:</string>
+    <string name="title_activity_test_fragment">TestFragment</string>
+    <string name="title_section0">Check</string>
 
 </resources>
