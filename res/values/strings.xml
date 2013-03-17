@@ -15,5 +15,7 @@
     <string name="medicine_type_">Medicine Type:</string>
     <string name="title_activity_test_fragment">TestFragment</string>
     <string name="title_section0">Check</string>
+    <string name="Text">abcdefg</string>
+    <string name="buttonName">add medicine</string>
 
 </resources>

@@ -146,10 +146,16 @@ public class MainActivity extends FragmentActivity implements
 			}
 			else if(position == 1)
 			{
+<<<<<<< HEAD
 				
 				Fragment history = medicationActivity.newInstance(1);
 				//Fragment history = new medicationActivity();
+=======
+				//Fragment history = medicationActivity.newInstance(1);
+				Fragment history = new medicationActivity();
+>>>>>>> ListFragment
 				return  history;
+				
 			}
 			else if(position == 2){
 				Fragment fragment2 = new historyActivity();
