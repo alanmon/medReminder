@@ -146,7 +146,9 @@ public class MainActivity extends FragmentActivity implements
 			}
 			else if(position == 1)
 			{
+				
 				Fragment history = medicationActivity.newInstance(1);
+				//Fragment history = new medicationActivity();
 				return  history;
 			}
 			else if(position == 2){

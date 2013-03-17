@@ -4,6 +4,7 @@ package com.example.medreminder;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class medicationActivity extends ListFragment {
+public class medicationActivity extends Fragment {
 
 	public medicationActivity() {
 	}
@@ -25,7 +26,7 @@ public class medicationActivity extends ListFragment {
         med.setArguments(args);
 
         return med;
-    }
+   } 
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
