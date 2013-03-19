@@ -23,11 +23,11 @@ import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 public class medicationActivity extends Fragment {
 
 	public medicationActivity() {
-=======
+=======*/
 public class medicationActivity extends ListFragment {
 	/*String[] strings={
 			"1",
@@ -50,7 +50,7 @@ public class medicationActivity extends ListFragment {
 	public class Medicinelist{
 		String aString;
 		Button b;
->>>>>>> ListFragment
+//>>>>>>> ListFragment
 	}
 	
 	
@@ -68,7 +68,7 @@ public class medicationActivity extends ListFragment {
    } 
 =======
     }*/
->>>>>>> ListFragment
+//>>>>>>> ListFragment
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

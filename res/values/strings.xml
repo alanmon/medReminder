@@ -17,5 +17,7 @@
     <string name="title_section0">Check</string>
     <string name="Text">abcdefg</string>
     <string name="buttonName">add medicine</string>
+    <string name="s_view_btn">button</string>
+    <string name="title_activity_test_my_view_list">TestMyViewList</string>
 
 </resources>
