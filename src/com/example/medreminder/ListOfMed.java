@@ -6,39 +6,17 @@ import java.util.List;
 import java.util.Map;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v4.app.ListFragment;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
-public class TestMyViewList extends ListFragment {
-
-	String[] presidents = {  
-	          "Dwight D. Eisenhower",  
-	          "John F. Kennedy",  
-	          "Lyndon B. Johnson",  
-	          "Richard Nixon",  
-	          "Gerald Ford",  
-	          "Jimmy Carter",  
-	          "Ronald Reagan",  
-	          "George H. W. Bush",  
-	          "Bill Clinton",  
-	          "George W. Bush",  
-	          "Barack Obama"  
-	     };  
-
-	
+public class ListOfMed extends ListFragment {
  
      @Override  
      public void onCreate(Bundle savedInstanceState) {  
           super.onCreate(savedInstanceState);  
-          SimpleAdapter adapter = new SimpleAdapter(this.getActivity(),getData(),R.layout.activity_test_my_view_list,
+          SimpleAdapter adapter = new SimpleAdapter(this.getActivity(),getData(),R.layout.activity_medlist,
                   new String[]{"title","info","img"},
                   new int[]{R.id.title,R.id.info,R.id.img});
           setListAdapter(adapter);
@@ -71,9 +49,7 @@ public class TestMyViewList extends ListFragment {
      public void onListItemClick(ListView parent, View v,   
      int position, long id)   
      {            
-          Toast.makeText(getActivity(),   
-               "You have selected " + presidents[position],   
-               Toast.LENGTH_SHORT).show();  
+   
      }    
 
 	

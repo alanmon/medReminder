@@ -154,8 +154,8 @@ public class MainActivity extends FragmentActivity implements
 				//Fragment history = medicationActivity.newInstance(1);
 				Fragment history = new medicationActivity();
 >>>>>>> ListFragment*/
-				Fragment history = new TestMyViewList();
-				return  history;
+				Fragment listofMed = new ListOfMed();
+				return  listofMed;
 				
 			}
 			else if(position == 2){
