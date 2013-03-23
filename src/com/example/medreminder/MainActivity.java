@@ -4,9 +4,11 @@ import java.util.Locale;
 
 
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -24,6 +26,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +48,7 @@ public class MainActivity extends FragmentActivity implements
 	 */
 	ViewPager mViewPager;
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -74,6 +78,17 @@ public class MainActivity extends FragmentActivity implements
 					}
 				});
 
+		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.btn_med).setTabListener(this));
+		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.btn_reward).setTabListener(this));
+		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.btn_history).setTabListener(this));
+		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.btn_log).setTabListener(this));
+		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.btn_profile).setTabListener(this));
+		//TODO::change to action bar to gray
+		//actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_launcher));
+		//TODO::change the tab color to gray
+		//actionBar.setStackedBackgroundDrawable(getResources().getDrawable(
+	    //        R.drawable.ic_launcher));
+		/*
 		// For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
 			// Create a tab with text corresponding to the page title defined by
@@ -84,12 +99,6 @@ public class MainActivity extends FragmentActivity implements
 					.setText(mSectionsPagerAdapter.getPageTitle(i))//add icon over here
 					.setTabListener(this));
 		}
-		/*actionBar.addTab(actionBar.newTab()
-				.setText("Medications")
-				.setTabListener(this));
-		actionBar.addTab(actionBar.newTab()
-				.setText("History")
-				.setTabListener(this));
 		*/
 	}
 
@@ -174,7 +183,7 @@ public class MainActivity extends FragmentActivity implements
 		@Override
 		public int getCount() {
 			// Show 2 total pages.
-			return 4;
+			return 5;
 		}
 
 		@Override
