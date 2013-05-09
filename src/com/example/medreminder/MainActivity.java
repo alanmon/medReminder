@@ -61,11 +61,11 @@ public class MainActivity extends FragmentActivity implements
 					}
 				});
 
-		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.btn_med).setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.btn_reward).setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.btn_history).setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.btn_log).setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.btn_profile).setTabListener(this));
+		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.check).setTabListener(this));
+		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.pill).setTabListener(this));
+		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.history_icon).setTabListener(this));
+		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.cog).setTabListener(this));
+		//actionBar.addTab(actionBar.newTab().setIcon(R.drawable.btn_profile).setTabListener(this));
 		//TODO::change to action bar to gray
 		//actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.ic_launcher));
 		//TODO::change the tab color to gray
@@ -139,14 +139,6 @@ public class MainActivity extends FragmentActivity implements
 			}
 			else if(position == 1)
 			{
-/*<<<<<<< HEAD
-				
-				Fragment history = medicationActivity.newInstance(1);
-				//Fragment history = new medicationActivity();
-=======
-				//Fragment history = medicationActivity.newInstance(1);
-				Fragment history = new medicationActivity();
->>>>>>> ListFragment*/
 				Fragment listofMed = new ListOfMed();
 				return  listofMed;
 				
@@ -159,10 +151,6 @@ public class MainActivity extends FragmentActivity implements
 				Fragment fragment3 = new settingActivity();
 				return fragment3;
 			}
-			else if(position == 4){
-				Fragment fragment3 = new settingActivity();
-				return fragment3;
-			}
 			else {
 				return null;
 			}
@@ -170,8 +158,8 @@ public class MainActivity extends FragmentActivity implements
 
 		@Override
 		public int getCount() {
-			// Show 2 total pages.
-			return 5;
+			// Show 4 total pages.
+			return 4;
 		}
 
 		@Override

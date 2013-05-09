@@ -44,27 +44,28 @@
     android:layout_height="wrap_content"
    
     android:orientation="horizontal">
+
     <ImageButton
         android:id="@+id/medtypea"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        
-        android:layout_weight="1"
-        android:src="@drawable/ic_launcher" />
+        android:layout_height="match_parent"
+        android:layout_weight="0.99"
+        android:src="@drawable/medtype_pill" />
 
     <ImageButton
         android:id="@+id/medtypeb"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:src="@drawable/ic_launcher" />
+        android:layout_height="match_parent"
+        android:layout_weight="0.99"
+        android:src="@drawable/medtype_drop" />
 
     <ImageButton
         android:id="@+id/medtypec"
-        android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher" />
+        android:layout_weight="1"
+        android:src="@drawable/medtype_syrup" />
+
 </LinearLayout>
 <TextView
         android:id="@+id/add_med_dose"
