@@ -30,8 +30,8 @@ public class DBHelper
 	static final String medDuration="medDuration";
 	static final String medInstruction="medInstruction";
 	static final String reminder1="reminder1";
-	static final String reminder2="reminder2";
-	static final String reminder3="reminder3";
+
+	
 	
 	/*History Table*/
 	static final String historyTable="History";
@@ -69,16 +69,14 @@ public class DBHelper
 					+ medName + " TEXT, "
 					+ medType + " INTEGER, "
 					+ medImage + " TEXT, "
-					+ takePerday + " INTEGER, "
 					+ startDay + " DATE, "
 					+ takePerday + " INTEGER, "
 					+ medDosage + " INTEGER, "
 					+ medDuration + " INTEGER, "
 					+ medInstruction + " INTEGER, "
-					+ reminder1 + " TEXT, "
-					+ reminder2 + " TEXT, "
-					+ reminder3 + " TEXT);");//TODO:: REMINDER IN TEXT, NEED PARSE
+					+ reminder1 + " TEXT);");//TODO:: REMINDER IN TEXT, NEED PARSE
 					//+ colPhoneNum + " TEXT);");
+			
 			
 			/*create child table*/
 			db.execSQL("CREATE TABLE " + historyTable + "("
@@ -119,7 +117,27 @@ public class DBHelper
 	 * @param name
 	 * @return -1 with error, otherwise, not -1
 	 */
-	public long insertParent(String email, String username, String password, String phoneNum, String name)
+	public long insertMed(String med_Name,int med_Type,String med_Image,int perday,String start_day, int med_Dosage, int med_Duration, int med_Instruction, String reminder)
+	{
+		ContentValues initialValues = new ContentValues();  
+		initialValues.put(medName,med_Name); 
+        initialValues.put(medType,med_Type);  
+        //initialValues.put(medImage, med_Image);  
+        initialValues.put(takePerday, perday);
+        initialValues.put(startDay, start_day); 
+        initialValues.put(medDosage, med_Dosage);
+        initialValues.put(medDuration, med_Duration);
+        initialValues.put(medInstruction, med_Instruction);
+        initialValues.put(reminder1, reminder);
+       // return db.insertOrThrow(parentTable, null, initialValues);
+        return db.insert(medicineTable, null, initialValues);  
+	}
+	
+	
+	
+	
+	
+/*	public long insertParent(String email, String username, String password, String phoneNum, String name)
 	{
 		ContentValues initialValues = new ContentValues();  
 		initialValues.put(colEmail, email); 
@@ -151,6 +169,6 @@ public class DBHelper
 		initialValues.put(reminder2, reminder_2);
 		initialValues.put(reminder3, reminder_3);
 		return db.insert(medicineTable, null, initialValues);
-	}
+	}*/
 	
 }

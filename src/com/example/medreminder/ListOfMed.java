@@ -5,11 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -22,13 +26,28 @@ public class ListOfMed extends ListFragment {
                   new String[]{"title","info","img"},
                   new int[]{R.id.title,R.id.info,R.id.img});
           setListAdapter(adapter);
+          
+         
      }
      
      @Override
      public View onCreateView(LayoutInflater inflater, ViewGroup container,
              Bundle savedInstanceState) {
-        
-         return inflater.inflate(R.layout.activity_test_my_view, container, false);
+    	 View view=inflater.inflate(R.layout.activity_test_my_view, container,false);
+    	 Button addMed=(Button)view.findViewById(R.id.b_addmed);
+    	 OnClickListener onClickListener=new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent();
+				intent.setClass(getActivity(), AddMedicatioActivity.class);
+				startActivity(intent);
+			}
+		};
+    	addMed.setOnClickListener(onClickListener); 
+    	 
+         return view;
      }
      
      private List<Map<String, Object>> getData() {
@@ -63,3 +82,4 @@ public class ListOfMed extends ListFragment {
 
 	
 }
+	
