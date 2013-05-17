@@ -24,6 +24,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.example.medreminder.Aa"
+            android:label="@string/title_activity_aa" >
+        </activity>
+        <activity
             android:name="com.example.medreminder.AddMedicatioActivity"
             android:label="@string/title_activity_add_medicatio"
             android:parentActivityName="com.example.medreminder.MainActivity" >
@@ -39,15 +43,6 @@
             android:name="com.example.medreminder.ListOfMed"
             android:label="@string/title_activity_test_my_view_list" >
         </activity>
-        <receiver android:name="widget" android:label="@string/app_name">
-            <intent-filter>
-				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" /> 
-			</intent-filter>
-		<meta-data
-			android:name="android.appwidget.provider"
-			android:resource="@xml/widget_des" />
-        </receiver>
-        <service android:enabled="true" android:name=".MyService" />
     </application>
 
 </manifest>

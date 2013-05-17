@@ -33,7 +33,7 @@ public class ListOfMed extends ListFragment {
      @Override
      public View onCreateView(LayoutInflater inflater, ViewGroup container,
              Bundle savedInstanceState) {
-    	 View view=inflater.inflate(R.layout.medication, container,false);
+    	 View view=inflater.inflate(R.layout.activity_test_my_view, container,false);
     	 Button addMed=(Button)view.findViewById(R.id.b_addmed);
     	 OnClickListener onClickListener=new OnClickListener() {
 			
