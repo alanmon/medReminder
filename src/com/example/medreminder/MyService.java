@@ -32,14 +32,10 @@ public class MyService extends Service
 
         ComponentName thisWidget = new ComponentName(this, widget.class);
  
-        
 		//RemoteViews imageViews = new RemoteViews(context.getPackageName(),
 			//	R.id.widget_imageView);
 		//imageViews.setImate
         //TODO: change how to show the image
-        views.setImageViewResource(R.id.widget_imageView, R.drawable.testimg);
-		appWidgetManager.updateAppWidget(thisWidget, views);
-        /**
 		if(state == 0)
 		{
 			//views.setInt(R.id.widget_imageView, "setImageLevel", 1);
@@ -72,7 +68,6 @@ public class MyService extends Service
 		appWidgetManager.updateAppWidget(thisWidget, views);
 		state = 0;
 		}
-		**/
     }
 
     @Override

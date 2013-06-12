@@ -9,12 +9,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class MedDatebase
+public class DBHelper
 {
+	/*Database information*/
+	static final String dbName="medReminder";
+	private static final int DATABASE_VERSION = 1;
 	
 	/*Medicine Table*/
 	static final String medicineTable="Medicines";
@@ -37,61 +39,32 @@ public class MedDatebase
 	static final String time="time";
 	
 
+	private static final String DATABASE_CREATE =
+		"create table users (_id integer primary key autoincrement, "
+		+ "username text not null, "
+		+ "password text not null);";
+
 	private Context context = null;
 	private DatabaseHelper DBHelper;
 	private SQLiteDatabase db;
 
-	
-	public MedDatebase(Context ctx)
+	public DBHelper(Context ctx)
 	{
 		this.context = ctx;
-		DBHelper = new DatabaseHelper(context, DatabaseHelper.dbName, null, DatabaseHelper.DATABASE_VERSION);
+		DBHelper = new DatabaseHelper(context);
 	}
 
-	private Cursor getAccessibleHoard() {
-	    /**
-	     * Listing 8-3: Querying a database
-	     */
-	    // Specify the result column projection. Return the minimum set
-	    // of columns required to satisfy your requirements.
-	    String[] result_columns = new String[] { 
-	    		idMed, medName, medType, medImage, takePerday,startDay,medDosage, medDuration, medInstruction,reminder1}; 
-	    
-	    // Specify the where clause that will limit our results.
-	    String where = idMed + "=" + 1;
-	    
-	    // Replace these with valid SQL statements as necessary.
-	    String whereArgs[] = null;
-	    String groupBy = null;
-	    String having = null;
-	    String order = null;
-	    
-	    SQLiteDatabase db = DBHelper.getWritableDatabase();
-	    Cursor cursor = db.query(DBHelper.dbName, 
-	                             result_columns, where,
-	                             whereArgs, groupBy, having, order);
-	    //
-	    return cursor;
-	  }
-	
-	
 	private static class DatabaseHelper extends SQLiteOpenHelper
 	{
-		
-		/*Database information*/
-		static final String dbName="medReminder.db";
-		private static final int DATABASE_VERSION = 1;
-
-		
-		public DatabaseHelper(Context context, String name, CursorFactory factory, int version) 
+		DatabaseHelper(Context context)
 		{
-			super(context, name, factory, version);
+			super(context, dbName, null, DATABASE_VERSION);
 		}
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			/*create  parent table*/
-			db.execSQL("CREATE TABLE " + medicineTable + " (" 
+			db.execSQL("CREATE TABLE " + medicineTable + "(" 
 					+ idMed + " INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+ medName + " TEXT, "
 					+ medType + " INTEGER, "
@@ -106,23 +79,17 @@ public class MedDatebase
 			
 			
 			/*create child table*/
-			db.execSQL("CREATE TABLE " + historyTable + " ("
+			db.execSQL("CREATE TABLE " + historyTable + "("
 					+ id_Med + " INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+ time + " TIMESTAMP);");
+			
+			
+			
+			
 		}
 		
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			// Log the version upgrade.
-		      Log.w("TaskDBAdapter", "Upgrading from version " +
-		        oldVersion + " to " +
-		        newVersion + ", which will destroy all old data");
-		      
-		   // Upgrade the existing database to conform to the new 
-		      // version. Multiple previous versions can be handled by 
-		      // comparing oldVersion and newVersion values.
-
-		      // The simplest case is to drop the old table and create a new one.
 			 db.execSQL("DROP TABLE IF EXISTS "+medicineTable);
 			 db.execSQL("DROP TABLE IF EXISTS "+historyTable);
 	 
@@ -130,12 +97,12 @@ public class MedDatebase
 			
 		}
 	}    
-/*
+
 	public void open() throws SQLException
 	{
 		db = DBHelper.getWritableDatabase();
 	}
-*/ 
+
 	public void close()
 	{
 		DBHelper.close();
@@ -163,7 +130,6 @@ public class MedDatebase
         initialValues.put(medInstruction, med_Instruction);
         initialValues.put(reminder1, reminder);
        // return db.insertOrThrow(parentTable, null, initialValues);
-        SQLiteDatabase db = DBHelper.getWritableDatabase();
         return db.insert(medicineTable, null, initialValues);  
 	}
 	

@@ -12,7 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
-import com.example.medreminder.db.MedDatebase;
+import com.example.medreminder.db.DBHelper;
 
 public class MainActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -27,10 +27,7 @@ public class MainActivity extends FragmentActivity implements
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
 
-    //DBHelper db = new DBHelper(MainActivity.this);
-    //db.open();
-   
-    
+    DBHelper db = new DBHelper(MainActivity.this);
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
@@ -144,8 +141,6 @@ public class MainActivity extends FragmentActivity implements
 			}
 			else if(position == 1)
 			{
-				MedDatebase dbHelper = new MedDatebase(MainActivity.this);
-				//dbHelper.open();
 				Fragment listofMed = new ListOfMed();
 				return  listofMed;
 				
