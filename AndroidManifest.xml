@@ -32,10 +32,6 @@
                 android:value="com.example.medreminder.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.medreminder.TestFragment"
-            android:label="@string/title_activity_test_fragment" >
-        </activity>
-        <activity
             android:name="com.example.medreminder.ListOfMed"
             android:label="@string/title_activity_test_my_view_list" >
         </activity>

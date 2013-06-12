@@ -4,6 +4,8 @@ package com.example.medreminder;
 
 import java.io.FileNotFoundException;
 
+import com.example.medreminder.db.MedDatebase;
+
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
@@ -79,16 +81,21 @@ public class AddMedicatioActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent= new Intent();
-				intent.setClass(AddMedicatioActivity.this, MainActivity.class);
-				startActivity(intent);
+				
+				MedDatebase db = new MedDatebase(AddMedicatioActivity.this);
+				db.insertMed("test", 1, "", 1, null, 1, 2, 1, null);
+				db.close();
+				finish();
+				//Intent intent= new Intent();
+				//intent.setClass(AddMedicatioActivity.this, MainActivity.class);
+				//startActivity(intent);
 			}
 		});
 		//find Button by id and set listener for Type button
 
-		 medtypeA =(ImageButton)findViewById(R.id.medtypea);
-		 medtypeB =(ImageButton)findViewById(R.id.medtypeb);
-		 medtypeC =(ImageButton)findViewById(R.id.medtypec);
+		medtypeA =(ImageButton)findViewById(R.id.medtypea);
+		medtypeB =(ImageButton)findViewById(R.id.medtypeb);
+		medtypeC =(ImageButton)findViewById(R.id.medtypec);
 		medtypeA.setOnClickListener(new medtypeOnClickListener());
 		medtypeB.setOnClickListener(new medtypeOnClickListener());
 		medtypeC.setOnClickListener(new medtypeOnClickListener());
@@ -439,6 +446,7 @@ public class AddMedicatioActivity extends Activity {
 	        case android.R.id.home:
 	            // app icon in action bar clicked; go home
 	            Intent intent = new Intent(this, MainActivity.class);
+	            
 	            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 	            startActivity(intent);
 	            return true;
