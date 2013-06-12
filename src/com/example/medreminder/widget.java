@@ -20,6 +20,9 @@ public class widget extends AppWidgetProvider {
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds) {
+		
+		
+		//set up alarmManager for updating the widget
 		final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         final Calendar TIME = Calendar.getInstance();
@@ -28,37 +31,38 @@ public class widget extends AppWidgetProvider {
         TIME.set(Calendar.MILLISECOND, 0);
 
         final Intent i = new Intent(context, MyService.class);
-
         if (service == null)
         {
             service = PendingIntent.getService(context, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
         }
         //TODO:: set how long it takes to update the widget
         m.setRepeating(AlarmManager.ELAPSED_REALTIME, 0, 1000 * 100, service);
-		/**
+		
 		// TODO Update the Widget UI.
 		final int N = appWidgetIds.length;
 
 		// Perform this loop procedure for each App Widget that belongs to this
 		// provider
-		for (int i = 0; i < N; i++) {
-			int appWidgetId = appWidgetIds[i];
+		for (int n = 0; n < N; n++) {
+			int appWidgetId = appWidgetIds[n];
 
 			// Create an Intent to launch ExampleActivity
-			Intent intent = new Intent(context, C_main.class);
-			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
-					intent, 0);
+	     	Intent intent = new Intent(context, MainActivity.class);
+	     	PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
+	     			intent, 0);
 
-			// Get the layout for the App Widget and attach an on-click listener
-			// to the button
-			RemoteViews views = new RemoteViews(context.getPackageName(),
-					R.layout.test_widget);
-			views.setOnClickPendingIntent(R.id.widget_imageView, pendingIntent);
-
+	     	// Get the layout for the App Widget and attach an on-click listener
+	     	// to the button
+	     	RemoteViews views = new RemoteViews(context.getPackageName(),
+	     			R.layout.widget);
+	     	//when widget is clicked, open the main activity
+	     	views.setOnClickPendingIntent(R.id.widget_imageView, pendingIntent);
+			appWidgetManager.updateAppWidget(appWidgetId, views);	
+		}
 			//RemoteViews imageViews = new RemoteViews(context.getPackageName(),
 				//	R.id.widget_imageView);
 			//imageViews.setImate
-
+/**
 			if(state == 0)
 			{
 				//views.setInt(R.id.widget_imageView, "setImageLevel", 1);
